@@ -1,0 +1,58 @@
+# jQuery Crash Course
+
+1. jQuery Ajax Tutorial #2 - Posting data to backend (jQuery tutorial #8)
+
+## Posting data to backend 
+
+main.js
+
+``` javascript
+$(function(){
+    var $orders = $('orders');
+    
+    $.ajax({
+        type: 'GET',
+        url: '/api/orders',
+        success: function(orders){
+            $each(orders, function(i, order){
+                $orders.append('<li>name: ' + order.name + ', drink: ' + order.drink + '</li>');
+            });
+        },
+        error: function(){
+            alert('error loading orders');
+        }
+    })
+})
+```
+
+index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery AJAX Tuturial</title>
+</head>
+
+<body>
+    <h1>jQuery Ajax Tuturial</h1>
+    <h2>Coffee orders</h2>
+    <ul id="orders"></ul>
+    <h4>Add a Coffee Order</h4>
+    <p>name:
+        <input type="text" id="name">
+    </p>
+    <p>drink:
+        <input type="text" id="drink">
+    </p>
+    <button id="add-order">Add!</button>
+    <script src="./main.js"></script>
+</body>
+
+</html>
+```
+
