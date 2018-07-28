@@ -194,3 +194,23 @@ index.html
 </html>
 ```
 
+
+
+## Edit modes & Better Mustache.js Templating
+
+main.js
+
+``` javascript
+
+```
+
+
+
+index.html
+
+``` html
+
+```
+
+
+
