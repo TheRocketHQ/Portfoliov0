@@ -1,11 +1,14 @@
-// Stopping an animation midway
-$("h1").fadeIn(2000, function () {
-    $(this).addClass("blue")
-})
-//stop the animation before completion
-$("img").on("click", function () {
-    $("h1").stop;
-});
+// jQuery .animate
 
-// delay method
-$("p").hide().delay(1000).show(300);
+// .animate (properties [, duration][, easing][, complete])
+// .animate (properties, options)
+
+$("#go").click(function () {
+    $("#block").animate({
+        opacity: .5,
+        marginLeft: "+=50",
+        height: "400px"
+    }, 3000, "linear", function () {
+        $(this).after("<div>Animation Complete</div>");
+    });
+});
