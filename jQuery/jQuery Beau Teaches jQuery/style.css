@@ -1,3 +1,28 @@
-.blue {
-    background: blue;
+body {
+    padding: 5px;
+    background: #f3f6fa;
+    font-size: 1.2em;
+}
+
+.target {
+    border: 2px solid #bbb;
+    background-color: lightskyblue;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.child {
+    display: block;
+    width: 90px;
+    color: white;
+    font: bold 12px;
+    background-color: orange;
+}
+
+.sibling {
+    display: block;
+    width: 90px;
+    color: white;
+    padding: 5px 10px;
+    background-color: slategray;
 }
