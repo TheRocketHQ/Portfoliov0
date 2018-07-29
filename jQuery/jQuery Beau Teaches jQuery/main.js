@@ -2,26 +2,22 @@
  // NOTE CHECK JQ SNIPPETS
  // Putting the function inside the jquery
 
+ //  Multiple Events with on as long as it's separated with a space character
  $(function () {
-     $("p").hover(function () {
-             console.log("you entered");
+     $("p").on({
+         "click": function () {
+             console.log("clicked!");
          },
-         function () {
-             console.log("You Left");
-         });
-     $("input").focus(function () {
-         console.log("You Did Something!");
+         "mouseover": function () {
+             console.log("hovered!");
+         },
+     });
+
+     $("input").change(function () {
+         console.log("you did something");
+
      });
  });
-
-
-
-
- $("p").click(function () {
-     console.log("you click a paragraph");
- });
-
-
 
  // dblclick, mouseenter,mouseleave, mousedown, mouseup, hover
  // form event: focus, blur, change
