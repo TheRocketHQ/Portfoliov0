@@ -1,4 +1,4 @@
-$("li").parent().css({
+$("span").parents().css({
     "color": "chocolate",
-    "border": "2px solid chocolate "
+    "border": "2px solid chocolate"
 })
