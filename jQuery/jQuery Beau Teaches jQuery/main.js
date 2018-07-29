@@ -6,3 +6,6 @@ $("h1").fadeIn(2000, function () {
 $("img").on("click", function () {
     $("h1").stop;
 });
+
+// delay method
+$("p").hide().delay(1000).show(300);
