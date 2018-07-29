@@ -1,5 +1,5 @@
 // Hides the Image
-$("img").hide(500);
+$("h1").hide(500);
 
 // Shows the Image
-$("img").show(1500);
+$("h1").show(1500);
