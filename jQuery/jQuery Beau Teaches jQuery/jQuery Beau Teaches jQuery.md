@@ -98,7 +98,8 @@ main.js
 
  //  Multiple Events with on as long as it's separated with a space character
  $(function () {
-     $("p").on({
+     //one runs only once
+     $("p").one({
          "click": function () {
              console.log("clicked!");
          },
@@ -106,6 +107,9 @@ main.js
              console.log("hovered!");
          },
      });
+
+     //  Turning event handler off
+     $("p").off("click");  
 
      $("input").change(function () {
          console.log("you did something");
