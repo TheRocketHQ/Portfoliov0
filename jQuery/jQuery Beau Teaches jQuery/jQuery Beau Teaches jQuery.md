@@ -1,6 +1,6 @@
 # jQuery Beau Teaches jQuery	
 
-
+Note to self generate contents of md
 
 ## Getting Started with jQuery 
 
