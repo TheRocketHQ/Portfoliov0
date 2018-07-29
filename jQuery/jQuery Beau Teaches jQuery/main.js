@@ -1,5 +1,5 @@
-// Hides the Image
-$("h1").slideUp(500);
+// fade out
+$("h1").fadeOut(500);
 
-// Shows the Image
-$("h1").slideDown(1500);
+// fadeIn
+$("h1").fadeIn("normal");
