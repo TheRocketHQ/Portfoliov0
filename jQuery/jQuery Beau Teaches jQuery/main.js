@@ -13,6 +13,9 @@
          },
      });
 
+     //  Turning event handler off
+     $("p").off("click");
+
      $("input").change(function () {
          console.log("you did something");
 
