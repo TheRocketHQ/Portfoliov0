@@ -1,5 +1,5 @@
 // Hides the Image
-$("img").hide("slow");
+$("img").hide(500);
 
 // Shows the Image
-$("img").show("fast");
+$("img").show(1500);
