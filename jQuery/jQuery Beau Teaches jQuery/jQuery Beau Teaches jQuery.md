@@ -2,6 +2,8 @@
 
 Note to self generate contents of md
 
+***
+
 ## Getting Started with jQuery 
 
 main.js
@@ -53,5 +55,63 @@ index.html
 </body>
 
 </html>
+```
+
+***
+
+
+
+## jQuery Events
+
+replacing document.ready with events
+
+index.html
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery - Beau Teaches jQuery Notes</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+</head>
+
+<body>
+    <p>Just your Normal one-sentence Paragraph</p>
+    <input type="text">
+</body>
+
+</html>
+```
+
+
+
+main.js
+
+``` javascript
+ // jQuery Events
+ // NOTE CHECK JQ SNIPPETS
+ // Putting the function inside the jquery
+
+//  Multiple Events with on
+ $(function () {
+     $("p").on("click", function () {
+         console.log("You clicked a paragraph");
+     });
+ });
+
+ // dblclick, mouseenter,mouseleave, mousedown, mouseup, hover
+ // form event: focus, blur, change
+```
+
+
+
+style.css
+
+``` css
+
 ```
 
