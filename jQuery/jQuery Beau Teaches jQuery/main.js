@@ -1,5 +1,5 @@
 // jQuery: Getting and Setting Content and Attributes   
 $("#btn").click(function () {
-    // gets the text not the html
-    console.log($("#test").html)
+    // gets the attribute
+    console.log($("#fcc").attr("href"))
 });
