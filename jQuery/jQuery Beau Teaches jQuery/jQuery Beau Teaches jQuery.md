@@ -121,11 +121,36 @@ main.js
  // form event: focus, blur, change
 ```
 
+## Effects
 
+index.html
 
-style.css
+``` html
+<!DOCTYPE html>
+<html lang="en">
 
-``` css
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery - Beau Teaches jQuery Notes</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+</head>
+
+<body>
+    <img src="..." alt="description" srcset="...">
+    <h1 class="title">Learn to code for free</h1>
+    <p>We're a community that helps you learn to code, then get experience by contributing to open source projects used by nonprofits.</p>
+</body>
+
+</html>
+```
+
+main.js
+
+``` javascript
 
 ```
+
+
 
