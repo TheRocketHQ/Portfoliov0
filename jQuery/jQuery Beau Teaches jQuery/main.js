@@ -1,10 +1,7 @@
 $("button").click(function () {
-
-    //set the font size of the p tag 
-    // it's usually best practices to avoid putting too much css in the js
-    $('p.big').css({
-        fontSize: "50px",
-        color: "blue",
-        backgroundColor: "yellow"
-    });
+    // add class, alternative to having css in the js
+    $('h1').addClass("red");
+    $("p").removeClass("big");
+    // adds to those who don't, remove from those who have
+    $("p").toggleClass("big");
 });
