@@ -5,8 +5,16 @@ $("#btn").click(function () {
 });
 
 $("#btn2").click(function () {
+    /* 
     // Sets the attribute in text
-    $("#text").text("FreeCodeCamp is Awesome");
+        $("#text").text("FreeCodeCamp is Awesome");
+    */
+
     // set the attribute in html like bold or wtv
     $("#text").html("FreeCodeCamp is < b > Awesome < /b>");
+});
+
+$("#btn3").click(function () {
+    // Set the Value
+    $("#name").val("Quincy Larson");
 });
