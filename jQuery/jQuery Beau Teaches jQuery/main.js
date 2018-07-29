@@ -1,8 +1,10 @@
 function loadDoc() {
-    // get data from a server
-    $.get("https://cors-anywhere.herokuapp.com/http;//carnes.cc/code/ajax_example.txt", function (data, status) {
-            console.log("Data: " + data + "/nStatus: " + status);
+    // Post data to a server
+    $.post("https://cors-anywhere.herokuapp.com/http;//carnes.cc/code/ajax_example.txt", {
+            name: "Beau Carnes",
+            city: "Grand Rapids"
         },
-        "dataType"
-    );
+        function (data, status) {
+            console.log("data: " + data + "\nStatus: " + status);
+        });
 }
