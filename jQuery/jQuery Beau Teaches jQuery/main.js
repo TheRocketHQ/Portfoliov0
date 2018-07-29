@@ -5,13 +5,10 @@ $("#btn").click(function () {
 });
 
 $("#btn2").click(function () {
-    /* 
-    // Sets the attribute in text
-        $("#text").text("FreeCodeCamp is Awesome");
-    */
-
     // set the attribute in html like bold or wtv
-    $("#text").html("FreeCodeCamp is < b > Awesome < /b>");
+    $("#text").text(function (i, origText) {
+        return "Old Text: " + origText + " New text: FreeCodeCamp is awesome! (index:" + i + ")"
+    })
 });
 
 $("#btn3").click(function () {
