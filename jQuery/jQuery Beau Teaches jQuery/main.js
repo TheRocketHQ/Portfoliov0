@@ -2,3 +2,4 @@
      "color": "chocolate",
      "border": "2px solid chocolate"
  })
+ //  The same happens for, prev, prevAll, prevUntil...
