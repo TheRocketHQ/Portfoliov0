@@ -5,3 +5,11 @@ $('.target')
     .prepend('<div class="child">Prepend</div>')
     .before('<div class="child">Before</div>')
     .after('<div class="sibling">After</div>')
+// Will append each p tag
+$('p').append('<b>Lots</b>');
+
+// Will remove 
+$('.target').remove()
+
+// will not remove but will empty 
+$('.target').empty();
