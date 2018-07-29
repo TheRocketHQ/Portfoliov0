@@ -1,4 +1,4 @@
- $("h2").siblings("p").css({
+ $("h2").next().css({
      "color": "chocolate",
      "border": "2px solid chocolate"
  })
