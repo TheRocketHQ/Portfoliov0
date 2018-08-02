@@ -9,22 +9,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
     <link rel="stylesheet" href="./style.css">
     <title>jQuery - Game Development - Advanced</title>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/EaselJS/1.0.2/easeljs.min.js'></script>
+
 </head>
 
 <body onload="init();">
     <canvas id="demoCanvas" width="500" height="300"></canvas>
     <script>
-        function init() {
-            var stage = new createjs.Stage("demoCanvas");
-            var circle = new createjs.Shape();
-            circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
-            circle.x = 100;
-            circle.y = 100;
-            stage.addChild(circle);
-            stage.update();
-        }
     </script>
 </body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/EaselJS/1.0.2/easeljs.min.js'></script>
+<script src="./main.js"></script>
 
 </html>
