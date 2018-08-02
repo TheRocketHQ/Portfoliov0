@@ -9,9 +9,29 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
     <link rel="stylesheet" href="./style.css">
     <title>jQuery - Game Development - Advanced</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/EaselJS/1.0.2/easeljs.min.js'></script>
 </head>
 
-<body>
+<body onload="init();">
+    <div class="jumbotron w-100 py-5 mx-auto">
+        <h1>jQuery - Game Development</h1>
+        <h4>By: Francisco Mateus for OC Project</h4>
+    </div>
+    <div class="container-fluid">
+        <canvas id="testCanvas" width="500" height="500">
+        </canvas>
+    </div>
+    <script>
+        function init() {
+            var stage = new createjs.stage("testCanvas");
+            var circle = new createjs.Shape();
+            circle.graphics.beginFill("red").drawCircle(0, 0, 90);
+            circle.x = 250;
+            circle.y = 250;
+            stage.addChild(circle);
+            stage.update();
+        }
+    </script>
     <script src="./main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
