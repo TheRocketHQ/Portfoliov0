@@ -1,78 +1,41 @@
-var queue = new createjs.loadQueue();
+// Objects actual ones not js stuff, like for game lol it's 3am im dead
+const PADDLE_WIDTH = 100;
+const PADDLE_HEIGHT = 20;
+const BRICK_WIDTH = 60;
+const BRICK_HEIGHT = 30;
+var stage;
+var paddle;
+var ball;
 
 function init() {
+    stage = new createjs.Stage("demoCanvas");
+    createjs.Ticker.setFPS(60);
+    createjs.Ticker.addEventListener("tick", stage);
 
-    queue.on("progress", handleFileProgress);
-    queue.on("fileload", handleFileLoad);
-    queue.on("complete", handleComplete);
-    queue.loadManifest([{
-            id: "myImage",
-            src: "./assets1.jpg"
-        },
-        {
-            id: "myImage2",
-            src: "./assets2.jpg"
-        },
-        {
-            id: "myImage3",
-            src: "./assets3.jpg"
-        },
-    ]);
+    createBrick();
+    createBall();
+    createPaddle();
+}
 
-    function handleFileProgress(e) {
-        console.log("Progress: " + queue.progress * 100 + "%");
-    }
+function createBrick() {
+    var brick = new createjs.Shape();
+    brick.graphics.beginFill('#000FFF');
+    brick.graphics.drawRect(0, 0, BRICK_WIDTH, BRICK_HEIGHT);
+    brick.graphics.endFill();
+    stage.addChild(brick);
+}
 
-    function handleFileProgress(e) {
-        var image = queue.getResult(e.item.id);
-        document.body.appendChild(image);
-    }
+function createBall() {
+    ball = new createjs.Shape();
+    ball.graphics.beginFill('red').drawCircle(0, 0, 8);
+    ball.x = 100;
+    ball.y = 100;
+    stage.addChild(ball);
+}
 
-    function handleComplete(e) {
-        console.log("Loading Completed");
-    }
-
-    // var stage1 = new createjs.Stage("demoCanvas1");
-    // var circle = new createjs.Shape();
-
-    // circle.graphics.beginFill("Crimson").drawCircle(0, 0, 50);
-    // circle.x = 100;
-    // circle.y = 100;
-    // stage1.addChild(circle);
-
-    // List of things added to our circle, in this case animations like loop, x movement, y movement, and transperency
-    // createjs.Tween.get(circle, {
-    //         loop: true
-    //     })
-    //     .to({
-    //         x: 400
-    //     }, 1000, createjs.Ease.getPowInOut(4))
-    //     .to({ 
-    //         alpha: 0,
-    //         y: 75
-    //     }, 500, createjs.Ease.getPowInOut(2))
-    //     .to({
-    //         alpha: 0,
-    //         y: 125
-    //     }, 100)
-    //     .to({
-    //         alpha: 1,
-    //         y: 100
-    //     }, 500, createjs.Ease.getPowInOut(2))
-    //     .to({
-    //         x: 100
-    //     }, 800, createjs.Ease.getPowInOut(2));
-    // createjs.Ticker.setFPS(60);
-    // createjs.Ticker.addEventListener("tick", stage1);
-
-    // // createjs.Sound.alternateExtensions = ["mp3"];
-    // function loadSound() {
-    //     createjs.Sound.registerSound("assets/hit.ogg", "hit");
-    // }
-
-    // function playSound() {
-    //     createjs.Sound.play("hit");
-    // }
-
-
+function createPaddle() {
+    paddle = new createjs.Shape();
+    paddle.graphics.beginFill('#000000').drawRect(0, 0, PADDLE_WIDTH, PADDLE_HEIGHT);
+    paddle.y = 200;
+    stage.addChild(paddle);
 }
