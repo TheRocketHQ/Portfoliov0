@@ -3,20 +3,42 @@ const PADDLE_WIDTH = 100;
 const PADDLE_HEIGHT = 20;
 const BRICKS_WIDTH = 60;
 const BRICKS_HEIGHT = 30;
+const BALL_RADIUS = 8;
 var stage;
 var paddle;
 var ball;
-var bricks;
+var bricks = [];
+
+
 
 function init() {
     stage = new createjs.Stage("demoCanvas");
-    createjs.Ticker.setFPS(60);
-    createjs.Ticker.addEventListener("tick", stage);
-
     createBrickGrid();
     createBall();
     createPaddle();
+    createjs.Ticker.setFPS(60);
+    createjs.Ticker.addEventListener("tick", stage);
 }
+
+function tick(event) {
+    stage.update();
+
+    if (ball.up) {
+        ball.y -= ball.ySpeed;
+        ball.x -= ball.ySpeed;
+    }
+    for (var i = 0; i < bricks.length; i++) {
+        if (checkCollision(ball, bricks[i])) {
+            destroyBrick(bricks[i]);
+        }
+    }
+}
+
+function checkCollision(ballElement, brickElement) {
+    if (ballElement.x + BALL_RADIUS <= brickElement.x - BRICKS_WIDTH / 2 || ballElement.x - BALL_RADIUS >= brickElement.x + BRICKS_WIDTH / 2 || ballElement.y - BALL_RADIUS >= brickElement.y + BRICKS_HEIGHT / 2 || ballElement.y + BALL_RADIUS <= brickElement.y - BRICKS_HEIGHT / 2) return false;
+    return true;
+}
+
 
 function createBrickGrid() {
     for (var i = 0; i < 14; i++)
@@ -56,7 +78,7 @@ function createPaddle() {
     paddle = new createjs.Shape();
     paddle.width = PADDLE_WIDTH;
     paddle.height = PADDLE_HEIGHT;
-    paddle.graphics.beginFill('#333333').drawRect(0, 0, paddle.width, paddle.height);
+    paddle.graphics.beginFill('#3333333').drawRect(0, 0, paddle.width, paddle.height);
     paddle.x = stage.canvas.width / 2 - PADDLE_WIDTH / 2;
     paddle.y = stage.canvas.height * 0.9;
     stage.addChild(paddle);
