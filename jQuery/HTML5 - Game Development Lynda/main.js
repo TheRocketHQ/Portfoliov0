@@ -1,10 +1,13 @@
 function init() {
-    var stage = new createjs.Stage("demoCanvas");
+
+    var stage1 = new createjs.Stage("demoCanvas1");
     var circle = new createjs.Shape();
+
     circle.graphics.beginFill("Crimson").drawCircle(0, 0, 50);
     circle.x = 100;
     circle.y = 100;
-    stage.addChild(circle);
+    stage1.addChild(circle);
+
     createjs.Tween.get(circle, {
             loop: true
         })
@@ -26,6 +29,18 @@ function init() {
         .to({
             x: 100
         }, 800, createjs.Ease.getPowInOut(2));
+
     createjs.Ticker.setFPS(60);
-    createjs.Ticker.addEventListener("tick", stage);
+    createjs.Ticker.addEventListener("tick", stage1);
+
+    // createjs.Sound.alternateExtensions = ["mp3"];
+    function loadSound() {
+        createjs.Sound.registerSound("assets/hit.ogg", "hit");
+    }
+
+    function playSound() {
+        createjs.Sound.play("hit");
+    }
+
+
 }
