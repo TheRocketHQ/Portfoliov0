@@ -11,28 +11,44 @@ var bricks = [];
 var score = 0;
 var lives = 3;
 var scoreText;
+var gameStarted = false;
 
 function init() {
     stage = new createjs.Stage("testCanvas");
 
-    createBall();
     createPaddle();
+    createBall();
     createBrickGrid();
     createScoreText();
     addToScore(0);
 
     createjs.Ticker.setFPS(60);
     createjs.Ticker.addEventListener("tick", tick); //Changed to tick from stage
+
+    stage.on("stagemousedown", function (event) {
+        if (!gameStarted) {
+            gameStarted = true;
+            ball.xSpeed = 5;
+            ball.ySpeed = 5;
+            ball.up = true;
+            ball.right = true;
+        }
+
+    });
 }
 
-// Functions to add to init 
 function addToScore(points) {
     score += points;
     scoreText.text = "Score: " + score + " / Lives: " + lives;
 }
 
-// Reset Ball Position and Speed when losing a life
-// Change Text with current var lives = 3;
+function createScoreText() {
+    scoreText = new createjs.Text("Score: 0", "16px Arial", "#000000");
+    addToScore(0);
+    scoreText.y = stage.canvas.height - 16;
+    stage.addChild(scoreText);
+}
+
 function loseLife() {
     lives--;
     scoreText.text = "Score: " + score + " / Lives: " + lives;
@@ -40,24 +56,39 @@ function loseLife() {
     ball.ySpeed = 0;
     ball.x = paddle.x;
     ball.y = paddle.y - PADDLE_HEIGHT / 2 - BALL_RADIUS;
+    gameStarted = false;
 }
 
 function tick(event) {
-    stage.update();
-    // Move the ball around 
-    // Again only defining one of two possible movements, the opposite movement will be the oposite option, left / right, up / down
+    paddle.x = stage.mouseX;
+    if (paddle.x + PADDLE_WIDTH / 2 > stage.canvas.width) {
+        paddle.x = stage.canvas.width - PADDLE_WIDTH / 2;
+    }
+    if (paddle.x - PADDLE_WIDTH / 2 < 0) {
+        paddle.x = PADDLE_WIDTH / 2;
+    }
+
+    if (!gameStarted) {
+        ball.x = paddle.x;
+        ball.y = paddle.y - PADDLE_HEIGHT / 2 - BALL_RADIUS;
+        stage.update();
+        return;
+    }
+
+
     if (ball.up) {
         ball.y -= ball.ySpeed;
+
     } else {
         ball.y += ball.ySpeed;
     }
+
     if (ball.right) {
         ball.x += ball.xSpeed;
     } else {
         ball.x -= ball.xSpeed;
     }
 
-    // Splice the Array, add to score
     for (var i = 0; i < bricks.length; i++) {
         if (checkCollision(ball, bricks[i])) {
             addToScore(100);
@@ -67,30 +98,35 @@ function tick(event) {
         }
     }
 
-    // Did the ball hit the paddle?
     if (checkCollision(ball, paddle)) {
         newBallXSpeedAfterCollision(ball, paddle);
     }
 
-    // Wall or Life?
+    //Check if we've reached the walls
+
     if (ball.x + BALL_RADIUS >= stage.canvas.width) {
         ball.x = stage.canvas.width - BALL_RADIUS;
         ball.right = false;
     }
+
     if (ball.x - BALL_RADIUS <= 0) {
         ball.x = BALL_RADIUS;
         ball.right = true;
     }
+
     if (ball.y - BALL_RADIUS <= 0) {
         ball.y = BALL_RADIUS;
         ball.up = false;
     }
+
     if (ball.y + BALL_RADIUS >= stage.canvas.height) {
         loseLife();
     }
 
     ball.lastX = ball.x;
     ball.lastY = ball.y;
+
+    stage.update();
 }
 
 function checkCollision(ballElement, hitElement) {
@@ -155,40 +191,12 @@ function newBallXSpeedAfterCollision(ballElement, hitElement) {
     }
 }
 
-// Positioning text relative to the canvas and setting up font type, color and size
-// Attention to the var created and .Text Method used
-function createScoreText() {
-    scoreText = new createjs.Text("", "16px Arial", "#000000");
-    scoreText.y = stage.canvas.height - 16;
-    stage.addChild(scoreText);
-}
 
-function createBall() {
-    ball = new createjs.Shape();
-    ball.graphics.beginFill("Red").drawCircle(0, 0, BALL_RADIUS);
-    ball.x = stage.canvas.width / 2;
-    ball.y = stage.canvas.height / 2;
-    stage.addChild(ball);
-
-    ball.up = true;
-    ball.right = true;
-    ball.xSpeed = 5;
-    ball.ySpeed = 5;
-    ball.lastX = 0;
-    ball.lastY = 0;
-}
-
-function createPaddle() {
-    paddle = new createjs.Shape();
-    paddle.width = PADDLE_WIDTH;
-    paddle.height = PADDLE_HEIGHT;
-    paddle.graphics.beginFill('#000000').drawRect(0, 0, paddle.width, paddle.height);
-    paddle.x = stage.canvas.width / 2 - PADDLE_WIDTH / 2;
-    paddle.y = stage.canvas.height * 0.9;
-    paddle.regX = PADDLE_WIDTH / 2;
-    paddle.regY = PADDLE_HEIGHT / 2;
-    paddle.setBounds(paddle.regX, paddle.regY, PADDLE_WIDTH, PADDLE_HEIGHT);
-    stage.addChild(paddle);
+function createBrickGrid() {
+    for (var i = 0; i < 14; i++)
+        for (var j = 0; j < 5; j++) {
+            createBrick(i * (BRICKS_WIDTH + 10) + 40, j * (BRICKS_HEIGHT + 5) + 20);
+        }
 }
 
 function createBrick(x, y) {
@@ -206,13 +214,6 @@ function createBrick(x, y) {
     bricks.push(brick);
 }
 
-function createBrickGrid() {
-    for (var i = 0; i < 14; i++)
-        for (var j = 0; j < 5; j++) {
-            createBrick(i * (BRICKS_WIDTH + 10) + 40, j * (BRICKS_HEIGHT + 5) + 20);
-        }
-}
-
 function destroyBrick(brick) {
     createjs.Tween.get(brick, {}).to({
         scaleX: 0,
@@ -223,4 +224,32 @@ function destroyBrick(brick) {
 
 function removeBrickFromScreen(brick) {
     stage.removeChild(brick)
+}
+
+function createBall() {
+    ball = new createjs.Shape();
+    ball.graphics.beginFill("Red").drawCircle(0, 0, BALL_RADIUS);
+    ball.x = paddle.x;
+    ball.y = paddle.y - PADDLE_HEIGHT / 2 - BALL_RADIUS;
+    stage.addChild(ball);
+
+    ball.up = true;
+    ball.right = true;
+    ball.xSpeed = 0;
+    ball.ySpeed = 0;
+    ball.lastX = 0;
+    ball.lastY = 0;
+}
+
+function createPaddle() {
+    paddle = new createjs.Shape();
+    paddle.width = PADDLE_WIDTH;
+    paddle.height = PADDLE_HEIGHT;
+    paddle.graphics.beginFill('#000000').drawRect(0, 0, paddle.width, paddle.height);
+    paddle.x = stage.canvas.width / 2 - PADDLE_WIDTH / 2;
+    paddle.y = stage.canvas.height * 0.9;
+    paddle.regX = PADDLE_WIDTH / 2;
+    paddle.regY = PADDLE_HEIGHT / 2;
+    paddle.setBounds(paddle.regX, paddle.regY, PADDLE_WIDTH, PADDLE_HEIGHT);
+    stage.addChild(paddle);
 }
