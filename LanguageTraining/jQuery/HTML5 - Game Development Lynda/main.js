@@ -12,6 +12,12 @@ var score = 0;
 var lives = 3;
 var scoreText;
 var gameStarted = false;
+// keyEvents
+const KEYCODE_LEFT = 37;
+const KEYCODE_RIGHT = 39
+const SPACEBAR = 32;
+var keyboardMoveLeft = false;
+var keyboardMoveRight = false;
 
 function init() {
     stage = new createjs.Stage("testCanvas");
@@ -26,15 +32,53 @@ function init() {
     createjs.Ticker.addEventListener("tick", tick); //Changed to tick from stage
 
     stage.on("stagemousedown", function (event) {
-        if (!gameStarted) {
-            gameStarted = true;
-            ball.xSpeed = 5;
-            ball.ySpeed = 5;
-            ball.up = true;
-            ball.right = true;
-        }
+        startLevel();
 
     });
+
+    stage.on("stagemousemove", function (event) {
+        paddle.x = stage.mouseX;
+    });
+
+    //keyboard handlers and stop overlapping events
+    window.onkeyup = keyUpHandler;
+    window.onkeydown = keyDownHandler;
+}
+
+function startLevel() {
+    if (!gameStarted) {
+        gameStarted = true;
+        ball.xSpeed = 5;
+        ball.ySpeed = 5;
+        ball.up = true;
+        ball.right = true;
+    }
+}
+
+function keyDownHandler(e) {
+    switch (e.keyCode) {
+        case KEYCODE_LEFT:
+            keyboardMoveLeft = true;
+            break;
+        case KEYCODE_RIGHT:
+            keyboardMoveRight = true;
+            break;
+        case SPACEBAR:
+            startLevel();
+            break;
+    }
+}
+
+
+function keyUpHandler(e) {
+    switch (e.keyCode) {
+        case KEYCODE_LEFT:
+            keyboardMoveLeft = false;
+            break;
+        case KEYCODE_RIGHT:
+            keyboardMoveRight = false;
+            break;
+    }
 }
 
 function addToScore(points) {
@@ -60,13 +104,20 @@ function loseLife() {
 }
 
 function tick(event) {
-    paddle.x = stage.mouseX;
+    if (keyboardMoveLeft) {
+        paddle.x -= 5;
+    }
+    if (keyboardMoveRight) {
+        paddle.x += 5;
+    }
+
     if (paddle.x + PADDLE_WIDTH / 2 > stage.canvas.width) {
         paddle.x = stage.canvas.width - PADDLE_WIDTH / 2;
     }
     if (paddle.x - PADDLE_WIDTH / 2 < 0) {
         paddle.x = PADDLE_WIDTH / 2;
     }
+
 
     if (!gameStarted) {
         ball.x = paddle.x;
