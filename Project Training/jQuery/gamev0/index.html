@@ -258,13 +258,18 @@
             var weapons = [];
             var players = [];
             var health;
-            var damage;
+            var damage = 10;
 
             function init() {
                 randomNumber();
                 gameStart();
             }
 
+            /*  Player turn */
+            // while Health > 0, run
+
+            /* Text */
+            // Change Text on the combat column
 
             /* Generate Random Number */
             // 4 number to weapons  + 2 number players = 6 numbers to generate
@@ -273,22 +278,25 @@
             // Splice 2 Players from the Array
             // Splice 4 Weapons from the Array
 
-            /*  Player turn */
-            // while Health > 0, run
-
             /* Player and Item Position */
             // Take 2 generated Numbers and change their class, future this could be addClass 
             // if player
-            // While they're players, change class of the correspondent tileID
+            // While they're players, addClass of the correspondent tileID
             // else
-            // While they're weapons, change class of the corresponde tileID
+            // While they're weapons, addclass to the correspondent tileID
 
             /* Movement */
             //Listen for gameStart
             // toggleClass Oppacity of tiles 3 Vertical and 3 Horizontal
             // hasClass Changed Tiles, onClick for movement
-            // onClick buttons Attack or Defense
-            
+            // change damage of Player according to the Weapon Clicked
+            // change the name of the Weapon according to the Weapon Clicked
+
+            /* Attacks */
+            // fadeToggle buttons according to turn
+            // Listen for button attack and for button defense
+            // Check if Defense Was clicked
+            //
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js "></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js "></script>
