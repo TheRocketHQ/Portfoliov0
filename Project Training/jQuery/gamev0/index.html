@@ -44,6 +44,7 @@
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">Shield</div>
                                 </div>
                             </p>
+                            <p class="card-text">weapon name</p>
                         </div>
                     </div>
                     <div class="card border-dark">
@@ -65,6 +66,8 @@
                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">Shield</div>
                                 </div>
                             </p>
+
+                            <p class="card-text">weapon name</p>
                         </div>
                     </div>
                 </div>
@@ -227,18 +230,18 @@
                         <div class="col-1 bg-success p-3" id="rowK col12 tile132">k12</div>
                     </div>
                     <div class="row ">
-                        <div class="col-1 bg-success p-3" id="rowL col1  tile133">k1</div>
-                        <div class="col-1 bg-success p-3" id="rowL col2  tile134">k2</div>
-                        <div class="col-1 bg-success p-3" id="rowL col3  tile135">k3</div>
-                        <div class="col-1 bg-success p-3" id="rowL col4  tile136">k4</div>
-                        <div class="col-1 bg-success p-3" id="rowL col5  tile137">k5</div>
-                        <div class="col-1 bg-success p-3" id="rowL col6  tile138">k6</div>
-                        <div class="col-1 bg-success p-3" id="rowL col7  tile139">k7</div>
-                        <div class="col-1 bg-success p-3" id="rowL col8  tile140">k8</div>
-                        <div class="col-1 bg-success p-3" id="rowL col9  tile141">k9</div>
-                        <div class="col-1 bg-success p-3" id="rowL col10 tile142">k10</div>
-                        <div class="col-1 bg-success p-3" id="rowL col11 tile143">k11</div>
-                        <div class="col-1 bg-success p-3" id="rowL col12 tile144">k12</div>
+                        <div class="col-1 bg-success p-3" id="rowL col1  tile133">l1</div>
+                        <div class="col-1 bg-success p-3" id="rowL col2  tile134">l2</div>
+                        <div class="col-1 bg-success p-3" id="rowL col3  tile135">l3</div>
+                        <div class="col-1 bg-success p-3" id="rowL col4  tile136">l4</div>
+                        <div class="col-1 bg-success p-3" id="rowL col5  tile137">l5</div>
+                        <div class="col-1 bg-success p-3" id="rowL col6  tile138">l6</div>
+                        <div class="col-1 bg-success p-3" id="rowL col7  tile139">l7</div>
+                        <div class="col-1 bg-success p-3" id="rowL col8  tile140">l8</div>
+                        <div class="col-1 bg-success p-3" id="rowL col9  tile141">l9</div>
+                        <div class="col-1 bg-success p-3" id="rowL col10 tile142">l10</div>
+                        <div class="col-1 bg-success p-3" id="rowL col11 tile143">l11</div>
+                        <div class="col-1 bg-success p-3" id="rowL col12 tile144">l12</div>
                     </div>
                 </div>
             </div>
@@ -256,7 +259,9 @@
         <script>
             var tiles = [];
             var weapons = [];
+            // var player; this is an object to hold weapon name, tilePosition , playerHealth, maYYBEEE define a class
             var players = [];
+            var obstacles = [];
             var health;
             var damage = 10;
 
@@ -266,19 +271,20 @@
             }
 
             /*  Player turn */
-            // while Health > 0, run
+            // while Health > 0, run - gameStart
 
             /* Text */
             // Change Text on the combat column
 
             /* Generate Random Number */
-            // 4 number to weapons  + 2 number players = 6 numbers to generate
+            // 4 number to weapons  + 2 number players  + 2 number of objects = 8 numbers to generate
 
             /* Splice Number from the Array */
             // Splice 2 Players from the Array
             // Splice 4 Weapons from the Array
+            // Splice 2 Obstacles from Array
 
-            /* Player and Item Position */
+            /* Player, Item Position and Obstacles */
             // Take 2 generated Numbers and change their class, future this could be addClass 
             // if player
             // While they're players, addClass of the correspondent tileID
@@ -286,17 +292,19 @@
             // While they're weapons, addclass to the correspondent tileID
 
             /* Movement */
-            //Listen for gameStart
-            // toggleClass Oppacity of tiles 3 Vertical and 3 Horizontal
+            // Listen for gameStart
+            // toggleClass Oppacity of tiles 3 Vertical and 3 Horizontal, mute movement on obstacles and tiles behind them 
             // hasClass Changed Tiles, onClick for movement
             // change damage of Player according to the Weapon Clicked
             // change the name of the Weapon according to the Weapon Clicked
+            // remember the weapon is a object, weaponName and weaponDamage
+            // drop old weapon on clicking new one
 
             /* Attacks */
-            // fadeToggle buttons according to turn
+            // fadeToggle buttons according to turn, aka disabled
             // Listen for button attack and for button defense
-            // Check if Defense Was clicked
-            //
+            // Check if Defense Was clicked - BOOL
+            // if Defense clicked multiply upcoming dmg by 0.5
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js "></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js "></script>
