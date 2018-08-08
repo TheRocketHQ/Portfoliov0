@@ -1,13 +1,12 @@
 # Portfolio
 
-> It's been a while..
+> My biggest concern since the very start was in keeping a track of what I've learn, after all, we're all humans here (.. at least for now); 
 >
-> Throughout my whole career and learning path in Programming, I've encountered bad notes, ugly notes, and good notes..
+> The Initial Ideia an was to bundle all my projects in one repo to work has a Plan tracker on what i've been up to.
 >
-> Therefore my biggest concern since the very start was in keeping a track of what I've learn, after all, we're all humans here (.. at least for now); 
->So all my knowledge and everything i know today (or at least what I think I know) will start to fade, and soon my muscle memory will begin to decay, till nothing remains just like ruins of a sand castle some kid did on a summer day. 
+> The notes will be in commits, I won't waste time going on for readme's like I once did in the past..
 >
-> The Initial an was to bundle all my projects in one repo (my OCD was ticking, lol), then a better idea occur and this private repo became public.
-> These notes will be in commits, I won't waste time going on for readme's like I once did in the past..
-> So yeah, that's all folks, enjoy reading my commits. 
-
+>So if you are reading this, i hope that i will somehow help you understand some of the doubts that you also may have. 
+>
+>Nice Reading
+>=)
