@@ -15,5 +15,5 @@ console.log(null === null) // true
 console.log(null == null) // true
 console.log(!null) // true
 console.log(!!null) // false
-console.log(1 + null) // 1 
+console.log(1 + null) // 1 a
 console.log(1 + undefined) // NaN
