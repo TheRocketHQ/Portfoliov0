@@ -1,8 +1,8 @@
 $(function () {
-    $("p").hide();
+    $("#gameContainer").hide();
 
     $("button").click(function () {
-        $("p").show();
+        $("#gameContainer").show();
     });
 
 });
