@@ -1,2 +1,8 @@
-// Creating a template literal
-document.getElementById("demo").innerHTML = "Hello World!";
+$(function () {
+    $("p").hide();
+
+    $("button").click(function () {
+        $("p").show();
+    });
+
+});
