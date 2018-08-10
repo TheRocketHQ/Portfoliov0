@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>jQuery v0.1</title>
 </head>
 
-<body id="demo">
+<body>
     <div class="container-fluid">
         <!-- gameContainer -->
         <div class="row bg-light text-dark p-5" id="gameContainer">
@@ -67,13 +67,14 @@
             </div>
             <div class="col-7">
                 <h2 class="p-3 text-center">Map</h2>
+                <span id="mapGen"></span>
             </div>
             <div class="col-2 ">
-                <h2 class="p-3 text-center ">Combat</h2>
+                <h2 class="p-3 text-center">Combat</h2>
                 <div class="card border-dark mb-3 ">
                     <div class="card-body text-dark ">
                         <h5 class="card-title ">Combat Notifications</h5>
-                        <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text" id="demo"></p>
                     </div>
                 </div>
                 <div class="card border-dark mb-3 ">
@@ -106,13 +107,11 @@
             </button>
         </div>
     </div>
-
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/js/bootstrap.min.js"></script>
-    <script src="./main.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/player.js"></script>
 </body>
 
 </html>
