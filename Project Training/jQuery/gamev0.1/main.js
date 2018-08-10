@@ -2,7 +2,7 @@ $(function () {
     $("#gameContainer").hide();
 
     $("button").click(function () {
-        $("#gameContainer").show();
+        $("#gameContainer").show($("#start").hide());
     });
 
 });
