@@ -1,0 +1,1 @@
+{"index.js":"let username = \"JackOfAllTrades\";\nlet userCheck = /\\w.\\d?/gi; // Change this line\nlet result = userCheck.test(username);"}
